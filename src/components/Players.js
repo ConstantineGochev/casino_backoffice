@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {fetch_player_logs} from '../actions/index'
+import {fetch_players} from '../actions/index'
 import { connect } from 'react-redux';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
@@ -20,10 +20,13 @@ class Players extends Component {
 
         this.set_players()        
     }
+    componentWillUnmount(){
+        this.setState({players:[]})
+    }
 
     set_players = async () =>{
          
-        await this.props.fetch_player_logs()
+        await this.props.fetch_players()
         
         const arr = await this.props.players
         
@@ -33,15 +36,15 @@ class Players extends Component {
     }
     delete = async (id) => {
         await axios.delete(`https://shrouded-sands-20038.herokuapp.com/new_path/apiv2/entry/players/${id}`)
-        await this.props.fetch_player_logs()        
+        await this.props.fetch_players()        
         const updated_players = await this.props.players
         this.setState({
             players: updated_players
         }) 
-        console.log(id)
+     //   console.log(id)
     }
     render(){
-       console.log(this.state.players)
+       //console.log(this.state.players)
        if(this.state.players.length === undefined || this.state.players.length === 0){
         return null
        }
@@ -93,4 +96,4 @@ function map_state_to_props(state){
             }
 }
 
-export default connect(map_state_to_props,{fetch_player_logs})(Players)
+export default connect(map_state_to_props,{fetch_players})(Players)

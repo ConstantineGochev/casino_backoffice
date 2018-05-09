@@ -1,7 +1,23 @@
+
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font: normal 18px/1.5 "Montserrat", helvetica, arial, sans-serif;
+}
+
+.header{
+  position: relative;
+  text-decoration: none;
+  font-size: 40px;
+  color: #8c4089;
+}
+.version {
+  position: relative;
+  text-decoration: none;
+  font-size: 13px;
+  color: #000;
+  left: 2%;
 }
 
 /* Position and sizing of burger button */
@@ -34,6 +50,7 @@ body {
   background: lightseagreen;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
+  overflow-y: hidden!important;
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -56,10 +73,28 @@ body {
   left: 20%;
   top: 10%;
 }
-.ReactTable {
+ .ReactTable {
+  position: absolute!important;
+  top: 5%;
   width: 90%;
   left: 10%;
-  
+} 
+.rt-td {
+  text-align: center;
+  align-self: center;
+}
+
+.bm-item-list a {
+  display: flex;
+  margin-top: 10%;  
+  text-decoration: none;
+  color: whitesmoke;
+  cursor: pointer;
+  font-weight: bold;
+
+}
+.ReactTable .-pagination .-btn {
+  background: #ee6e73!important;
 }
 
 /* buttton styles */
@@ -123,12 +158,119 @@ body {
 .btn.red {
   background-color: #e74c3c;
 }
+.btn.add {
+  position: absolute!important;
+  width: 180px;
+  text-decoration: none;  
+  top:3%!important;
+  left: 80%;
+  
+}
 
 .btn.red:hover, .btn.red:focus {
   background-color: #c0392b;
 }
 
+/* REGISTER FORM */
 
+.login-form {
+  width: 100%;
+  padding: 2em;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.15);
+  left: 40%;
+  top: 4%!important; 
+
+}
+.login-form:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(to right, #35c3c1, #00d6b7);
+}
+@media screen and (min-width: 600px) {
+  .login-form {
+    width: 50vw;
+    max-width: 15em;
+  }
+}
+
+.flex-row {
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.lf--label {
+  width: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f6f8;
+  cursor: pointer;
+}
+
+.lf--input {
+  flex: 1;
+  padding: 1em;
+  border: 0;
+  color: #8f8f8f;
+  font-size: 1rem;
+}
+.lf--input:focus {
+  outline: none;
+  transition: -webkit-transform .15s ease;
+  transition: transform .15s ease;
+  transition: transform .15s ease, -webkit-transform .15s ease;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.lf--submit {
+  display: block;
+  padding: 1em;
+  width: 100%;
+  background: linear-gradient(to right, #35c3c1, #00d6b7);
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: .75em;
+  font-weight: 600;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+.lf--submit:focus {
+  outline: none;
+  transition: -webkit-transform .15s ease;
+  transition: transform .15s ease;
+  transition: transform .15s ease, -webkit-transform .15s ease;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.lf--forgot {
+  margin-top: 1em;
+  color: #00d6b7;
+  font-size: .65em;
+  text-align: center;
+}
+
+::-webkit-input-placeholder {
+  color: #8f8f8f;
+}
+
+:-ms-input-placeholder {
+  color: #8f8f8f;
+}
+
+::-ms-input-placeholder {
+  color: #8f8f8f;
+}
+
+::placeholder {
+  color: #8f8f8f;
+}
 
 
 

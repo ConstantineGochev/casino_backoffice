@@ -9,9 +9,11 @@ export default class Navigation extends Component {
     render(){
         return (
             <Menu>
-                <Link to="/"> Dashboard </Link>
-                <Link to="/players"> Players </Link>
-                <Link to="/requests"> Requests </Link>
+                <h1 className="header">CASINO<span className="version">v 1.0</span></h1>
+                <Link to="/dashboard"> DASHBOARD </Link>
+                <Link to="/players"> PLAYERS </Link>
+                <Link to="/player_logs"> PLAYER LOGS</Link>                
+                <Link to="/requests"> REQUESTS </Link>
             </Menu>                
         )
     }
