@@ -202,14 +202,18 @@ body {
   display: flex;
   margin-bottom: 1em;
 }
-
+.form-header {
+  position: relative;
+  display: flex;
+  left: 20%;
+}
 .lf--label {
-  width: 2em;
+  width: 15em;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #f5f6f8;
-  cursor: pointer;
+  margin-bottom: 1%;
 }
 
 .lf--input {
@@ -218,6 +222,17 @@ body {
   border: 0;
   color: #8f8f8f;
   font-size: 1rem;
+  width: 14.87em;
+}
+.form-error {
+  color: red;
+  font-style: italic;
+}
+.btn-container {
+  display: flex;
+}
+.clear-values {
+  left: 20%;
 }
 .lf--input:focus {
   outline: none;

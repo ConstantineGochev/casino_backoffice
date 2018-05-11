@@ -13,9 +13,10 @@ class PlayerLogs extends Component {
         }
     }
     componentDidMount(){
-       this.set_logs()
+           this.set_logs()
     }
     componentWillUnmount(){
+        this.set_logs = null;
         this.setState({logs:[]})
     }
     set_logs = async () =>{
@@ -27,7 +28,7 @@ class PlayerLogs extends Component {
         })
     }
     render(){
-        //console.log(this.state.logs)
+        console.log(this.state.logs)
         return (
                <ReactTable
           data={this.state.logs}

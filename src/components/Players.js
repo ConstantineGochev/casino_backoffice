@@ -21,6 +21,7 @@ class Players extends Component {
         this.set_players()        
     }
     componentWillUnmount(){
+        this.set_players = null;
         this.setState({players:[]})
     }
 
@@ -44,7 +45,7 @@ class Players extends Component {
      //   console.log(id)
     }
     render(){
-       //console.log(this.state.players)
+       console.log(this.state.players)
        if(this.state.players.length === undefined || this.state.players.length === 0){
         return null
        }
@@ -78,7 +79,10 @@ class Players extends Component {
             
                   accessor: "_id",                  
                   Cell: row => (
+              
                           <button onClick={() => this.delete(row.original._id)} className="btn red" ><span>Delete</span></button>
+                   
+   
                          )
                 
             } 

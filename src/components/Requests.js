@@ -16,6 +16,7 @@ class Requests extends Component {
         this.set_requests()
     }
     componentWillUnmount(){
+        this.set_requests = null;
         this.setState({players:[]})
     }
     set_requests = async () =>{
