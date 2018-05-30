@@ -12,13 +12,14 @@ class PlayerLogs extends Component {
             logs: []
         }
     }
-    componentDidMount(){
+    componentWillMount(){
            this.set_logs()
     }
-    componentWillUnmount(){
-        this.set_logs = null;
-        this.setState({logs:[]})
-    }
+    // componentWillUnmount(){
+    //     //this.set_logs = this.set_logs.unbind(this)
+    //     this.set_logs = null
+    //    // this.setState({logs:[]})
+    // }
     set_logs = async () =>{
          
         await this.props.fetch_player_logs()

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, } from 'redux-form'
 import axios from 'axios';
 import Expire from './Expire'
 
@@ -25,10 +25,10 @@ const validate = values => {
   }
   if (!values.balance) {
     errors.balance = 'Balance Required'
-  } else if (isNaN(Number(values.balance))) {
-    errors.age = 'Balance must be a number'
+  } else if (isNaN(values.balance)) {
+    errors.balance = 'Balance must be a number'
   } else if (Number(values.balance) <= 0) {
-    errors.age = 'Sorry, balance must be a positive number'
+    errors.balance = 'Sorry, balance must be a positive number'
   }
   return errors
 }
@@ -66,20 +66,35 @@ const new_user_created = () => {
 const onSubmit = async (player) => {
     let new_player;
     console.log(player)
-    try{
-         new_player = await axios.post('https://shrouded-sands-20038.herokuapp.com/new_path/apiv2/entry/players',player)
-
+    //try{
+         new_player = await axios.post('https://'+ window.location.hostname + ':3000/new_path/apiv2/entry/players',player)
+        //   new_player = await fetch('https://' + window.location.hostname + ':3000/new_path/apiv2/entry/players',{
+        //    body: JSON.stringify(player),
+        //    cache: 'no-cache',
+        //    credentials: '*',
+        //    headers: {
+        //         'content-type': 'application/json'
+        //    },
+        //    method: 'POST',
+        //    mode: 'cors',
+        //  }).then(response => response.json()).catch(err => console.log(err))
+        if(new_player){
 
          new_player_created = true;
          doesExist = false;
-       
-    }catch(err){
-      
+
+        }else {
          doesExist = true;
          new_player_created = false;
+        }
+        console.log(new_player)
+       
+    //}catch(err){
+      
+    
         
-        console.log(err)
-    }
+        //console.log(err)
+    //}
                        
     console.log(new_player )
 
@@ -122,7 +137,67 @@ AddForm = reduxForm({
   validate
 })(AddForm)
 
+// class AddForm extends Component {
+//   constructor(props){
+//      super()
+//      this.state = {
+//        screenname: '',
+//        password: '',
+//        player_id: 0,
+//      }
+//   }
+//   handleSubmit(){
+//     console.log('submit')
+//   }
+//   handleChange(event, input){
+//     console.log('changed form')
 
+//     this.setState({
+//       input: event.target.value
+//     })
+    
+//   }
+//   render(){
+//     return(
+//     <form onSubmit={this.handleSubmit} className="login-form">
+//        <div className="flex-row form-header">ADD NEW PLAYER</div>
+//   <label className="flex-row" >
+//     Screenname:
+//     <input
+//       type="text"
+//       name="screenname"
+//       value={this.state.screenname}
+//       onChange={(e) => this.handleChange(e,'screenname')}
+//     />
+//   </label>
+//   <label className="flex-row" >
+//     Password:
+//     <input
+//       type="password"
+//       name="password"
+//       value={this.state.password}
+//       onChange={(e) => this.handleChange(e,'password')}
+//     />
+//   </label>
+//   <label className="flex-row">
+//     Player ID:
+//     <input
+//       type="text"
+//       name="player_id"
+//       value={this.state.player_id}
+//       onChange={(e)=> this.handleChange(e,'player_id')}
+//     />
+//   </label>
+
+ 
+//   <br />
+//   <label>
+//   <input type="submit" value="Submit" className="btn"/>
+//   </label>
+// </form>
+//     )
+//   }
+// }
 
 
 

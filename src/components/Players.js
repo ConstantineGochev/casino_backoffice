@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {fetch_players} from '../actions/index'
+import {fetch_players, fetch_player} from '../actions/index'
 import { connect } from 'react-redux';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import axios from 'axios';
-
+import { Link } from 'react-router'
 
 
 
@@ -16,14 +16,15 @@ class Players extends Component {
         }
     }
 
-    componentDidMount(){
+    componentWillMount(){
 
         this.set_players()        
     }
-    componentWillUnmount(){
-        this.set_players = null;
-        this.setState({players:[]})
-    }
+    // componentWillUnmount(){
+    //     //this.set_players =  this.set_players.unbind(this)
+    //     this.set_players = null;
+    //     //this.setState({players:[]})
+    // }
 
     set_players = async () =>{
          
@@ -36,13 +37,17 @@ class Players extends Component {
         })
     }
     delete = async (id) => {
-        await axios.delete(`https://shrouded-sands-20038.herokuapp.com/new_path/apiv2/entry/players/${id}`)
+        await axios.delete('https://'+ window.location.hostname + `:3000/new_path/apiv2/entry/players/${id}`)
         await this.props.fetch_players()        
         const updated_players = await this.props.players
         this.setState({
             players: updated_players
         }) 
      //   console.log(id)
+    }
+    current_user =  (id) => {
+        console.log('id', id)
+         this.props.fetch_player(id)
     }
     render(){
        console.log(this.state.players)
@@ -83,9 +88,19 @@ class Players extends Component {
                           <button onClick={() => this.delete(row.original._id)} className="btn red" ><span>Delete</span></button>
                    
    
-                         )
+                         ),
                 
-            } 
+            },
+            {
+                  Cell: row => (
+                         <Link to="/settings_form" onClick={() => this.current_user(row.original._id)} className="btn green" ><span>Settings</span></Link>
+
+                         // <button onClick={() => console.log('sadasd')} className="btn green" ><span>Settings</span></button>
+                   
+   
+                         )
+
+            }
           ]}
           defaultPageSize={10}
           className="-striped -highlight"
@@ -100,4 +115,4 @@ function map_state_to_props(state){
             }
 }
 
-export default connect(map_state_to_props,{fetch_players})(Players)
+export default connect(map_state_to_props,{fetch_players, fetch_player})(Players)

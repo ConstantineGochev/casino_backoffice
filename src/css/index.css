@@ -158,6 +158,10 @@ body {
 .btn.red {
   background-color: #e74c3c;
 }
+.btn.green {
+  background-color: green;
+
+}
 .btn.add {
   position: absolute!important;
   width: 180px;

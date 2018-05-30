@@ -12,13 +12,14 @@ class Requests extends Component {
             requests: []
         }
     }
-    componentDidMount(){
+    componentWillMount(){
         this.set_requests()
     }
-    componentWillUnmount(){
-        this.set_requests = null;
-        this.setState({players:[]})
-    }
+    // componentWillUnmount(){
+    //     //this.set_requests = this.set_requests.unbind(this)
+    //     this.set_requests = null;
+    //    // this.setState({players:[]})
+    // }
     set_requests = async () =>{
          
         await this.props.fetch_requests()
@@ -55,6 +56,12 @@ class Requests extends Component {
           
                   Header: "Operation",
                   accessor: "op"
+ 
+            },
+             {
+          
+                  Header: "Transfer  ID",
+                  accessor: "transfer_id"
  
             },
              {
