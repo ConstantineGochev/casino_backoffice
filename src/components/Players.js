@@ -93,7 +93,8 @@ class Players extends Component {
             },
             {
                   Cell: row => (
-                         <Link to="/settings_form" onClick={() => this.current_user(row.original._id)} className="btn green" ><span>Settings</span></Link>
+                        <Link to="/players/settings_form" onClick={() => this.current_user(row.original._id)} className="btn green" ><span>Settings</span></Link> 
+
 
                          // <button onClick={() => console.log('sadasd')} className="btn green" ><span>Settings</span></button>
                    
